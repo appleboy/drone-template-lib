@@ -28,21 +28,19 @@ import (
 	"github.com/aymerick/raymond"
 )
 
-var (
-	funcs = map[string]interface{}{
-		"duration":       toDuration,
-		"datetime":       toDatetime,
-		"success":        isSuccess,
-		"failure":        isFailure,
-		"truncate":       truncate,
-		"urlencode":      urlencode,
-		"since":          since,
-		"uppercasefirst": uppercaseFirst,
-		"uppercase":      strings.ToUpper,
-		"lowercase":      strings.ToLower,
-		"regexReplace":   regexReplace,
-	}
-)
+var funcs = map[string]interface{}{
+	"duration":       toDuration,
+	"datetime":       toDatetime,
+	"success":        isSuccess,
+	"failure":        isFailure,
+	"truncate":       truncate,
+	"urlencode":      urlencode,
+	"since":          since,
+	"uppercasefirst": uppercaseFirst,
+	"uppercase":      strings.ToUpper,
+	"lowercase":      strings.ToLower,
+	"regexReplace":   regexReplace,
+}
 
 func init() {
 	for name, function := range sprig.GenericFuncMap() {
@@ -66,7 +64,6 @@ func toDatetime(timestamp int64, layout, zone string) string {
 	}
 
 	loc, err := time.LoadLocation(zone)
-
 	if err != nil {
 		return time.Unix(timestamp, 0).Local().Format(layout)
 	}
@@ -140,6 +137,7 @@ func regexReplace(pattern string, input string, replacement string) string {
 
 func invalidHelper(name string) bool {
 	invalids := []string{
+		"duration",
 		"buildCustomCert",
 		"decryptAES",
 		"derivePassword",
