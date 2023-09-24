@@ -16,9 +16,10 @@ package template
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 
 	"github.com/mailgun/raymond/v2"
@@ -41,14 +42,14 @@ func Render(template string, payload interface{}) (s string, err error) {
 
 			defer res.Body.Close()
 
-			out, err := ioutil.ReadAll(res.Body)
+			out, err := io.ReadAll(res.Body)
 			if err != nil {
 				return s, fmt.Errorf("failed to read: %w", err)
 			}
 
 			template = string(out)
 		case "file":
-			out, err := ioutil.ReadFile(u.Path)
+			out, err := os.ReadFile(u.Path)
 			if err != nil {
 				return s, fmt.Errorf("failed to read: %w", err)
 			}

@@ -179,6 +179,13 @@ func invalidHelper(name string) bool {
 		"semver",
 		"semverCompare",
 		"trimall",
+		"randBytes",
+		"mustChunk",
+		"genSelfSignedCertWithKey",
+		"mustFromJson",
+		"genSignedCertWithKey",
+		"genCAWithKey",
+		"dig",
 	}
 
 	for _, invalid := range invalids {
