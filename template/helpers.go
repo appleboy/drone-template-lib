@@ -25,7 +25,7 @@ import (
 	"unicode/utf8"
 
 	"github.com/Masterminds/sprig/v3"
-	"github.com/aymerick/raymond"
+	"github.com/mailgun/raymond/v2"
 )
 
 var funcs = map[string]interface{}{
